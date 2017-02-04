@@ -1,19 +1,18 @@
 #ifndef OPERATION_H_
 #define OPERATION_H_
 
-int random(int max);// random number 0-max
-
 class Operation{
 private:
 	Operation *prep;
 	Operation *next;
 	char symbol;
 	int priority;
-	int deno;// denominator
 	int nume;// numerator
+	int deno;// denominator
+	
 
 	char newsymbol();
-	int newnum();
+	int newnum(int min,int max);// random min-10
 
 	int plus();
 	int minus();
@@ -23,9 +22,9 @@ private:
 	int simplify();// simplify 
 public:
 	Operation();
+	Operation(int f);//init construct: f==1 means root of the tree  
 	~Operation();
-	Operation* newop; //last priority
-	int print(int lastpri);//Traversal tree,print the equation and calculate the answer
+	int print(int lastpri);//last priority   Traversal tree,print the equation and calculate the answer
 
 }
 
