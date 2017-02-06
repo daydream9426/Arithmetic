@@ -1,16 +1,13 @@
 #include <iostream>
-#include <arithmetic.h>
+#include "operation.h"
+#include "fraction.h"
 
-Operation *createtree();
-
-
-
-
-
-
-
-Operation *createtree()
+int main(void)
 {
-	Operation root;
-	return &root;
+	Operation *a;
+	a=new Operation(1,1);
+	delete a;
+	return 0;
 }
+
+
