@@ -5,7 +5,7 @@ Operation::Operation():root(NULL),ans()
 {
 	Fraction *p;
 	root=new TreePoint(1,1);
-	while ((p=root->compute())==NULL) //if setans() return 1, this tree has error
+	while (((p=root->compute())==NULL)||(p->ifint()==0)) //if compute() return NULL or ifint() return 0, this tree has error
 	{
 		delete root;
 		root=new TreePoint(1,1);

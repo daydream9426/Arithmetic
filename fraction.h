@@ -15,7 +15,7 @@ public:
 	~Fraction();
 	int print();
 	
-
+	friend bool operator==(const Fraction &lhs,const Fraction &rhs);
 	friend const Fraction operator+ (const Fraction &lhs,const Fraction &rhs);
 	friend const Fraction operator- (const Fraction &lhs,const Fraction &rhs);
 	friend const Fraction operator* (const Fraction &lhs,const Fraction &rhs);
@@ -23,7 +23,12 @@ public:
 
 	inline int ifzero()
 	{
-		if (nume==0) return 1;
+		if (nume==0) return 1;//true
+		return 0;
+	}
+	inline int ifint()
+	{
+		if (deno==1) return 1;//true
 		return 0;
 	}
 };

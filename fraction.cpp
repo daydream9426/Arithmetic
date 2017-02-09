@@ -62,6 +62,12 @@ int Fraction::simplify()
 	return 0;
 }
 
+
+bool operator==(const Fraction &lhs,const Fraction &rhs)
+{
+	return ((lhs.nume==rhs.nume)&&(lhs.deno==rhs.deno));
+}
+
 const Fraction operator+ (const Fraction &lhs,const Fraction &rhs)
 {
 	int newdeno,newnume;
