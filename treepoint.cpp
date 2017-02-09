@@ -116,17 +116,18 @@ TreePoint::~TreePoint()
 
 int TreePoint::print(int lastpri)// first time lastpri=0
 {
-	if (lastpri>priority) std::cout<<"( ";
+	extern int wid;
+	if (lastpri>priority) {std::cout<<"( ";wid+=2;}
 	if (prep!=NULL)
 		prep->print(priority);
 	if (symbol!='0'&&symbol!='/')
-		std::cout<<symbol<<" ";
+		{std::cout<<" "<<symbol<<" ";wid+=3;}
 	else if (symbol=='/')
-		std::cout<<"¡Â ";
-	else num->print();
+		{std::cout<<" ¡Â ";wid+=4;}
+	else {wid+=(num->print());}
 	if (next!=NULL)
 		next->print(rightpriority);
-	if (lastpri>priority) std::cout<<") ";
+	if (lastpri>priority) {std::cout<<" )";wid+=2;}
 	return 0;
 }
 

@@ -24,17 +24,22 @@ Fraction::Fraction(const Fraction &from)
 
 int Fraction::print()
 {
-	if (nume==0) {std::cout<<"0 ";return 0;}
+	int width=0,widnume=0,widdeno=0;
+	
+	if (nume==0) {std::cout<<"0";width+=1;return width;}
 	if (deno*nume<0) 
 	{
 		std::cout<<"-";
+		width+=1;
 		deno=abs(deno);
 		nume=abs(nume);
+		
 	}
-	if (deno==1) std::cout<<nume;
-	else std::cout<<nume<<"/"<<deno;
-	std::cout<<" "; 
-	return 0;
+	widnume=(static_cast<int> (log10(nume)))+1;
+	widdeno=(static_cast<int> (log10(deno)))+1;
+	if (deno==1) {std::cout<<nume;width+=widnume;}
+	else {std::cout<<nume<<"/"<<deno;width+=1+widnume+widdeno;}
+	return width;
 }
 
 

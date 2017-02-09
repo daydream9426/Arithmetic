@@ -1,6 +1,9 @@
 #include "operation.h"
 #include "TreePoint.h"
 #include <iostream>
+
+int wid=0;
+
 Operation::Operation():root(NULL),ans()
 {
 	Fraction *p;
@@ -27,7 +30,9 @@ Operation::Operation(const Operation &from)
 }
 int Operation::print()
 {
+	wid=0;
 	root->print(0);
+	return wid; 
 }
 Fraction Operation::getans()
 {
