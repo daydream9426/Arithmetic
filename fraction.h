@@ -14,13 +14,15 @@ public:
 	Fraction(const Fraction &from);
 	~Fraction();
 	int print();
+	Fraction& operator= (const Fraction &rhs);
 	
 	friend bool operator==(const Fraction &lhs,const Fraction &rhs);
 	friend const Fraction operator+ (const Fraction &lhs,const Fraction &rhs);
 	friend const Fraction operator- (const Fraction &lhs,const Fraction &rhs);
 	friend const Fraction operator* (const Fraction &lhs,const Fraction &rhs);
 	friend const Fraction operator/ (const Fraction &lhs,const Fraction &rhs);
-
+	
+	
 	inline int ifzero()
 	{
 		if (nume==0) return 1;//true

@@ -6,7 +6,7 @@ Fraction::Fraction():nume(0),deno(1)
 {
 
 }
-Fraction::Fraction(int nu,int de):nume(nu),deno(de)
+Fraction::Fraction(int nu,int de=1):nume(nu),deno(de)
 {
 	simplify();
 }
@@ -42,6 +42,16 @@ int Fraction::print()
 	return width;
 }
 
+Fraction& Fraction::operator= (const Fraction &rhs)
+{
+	if(this!=&rhs)
+	{
+		this->deno=rhs.deno;
+		this->nume=rhs.nume;
+	}
+	return *this;
+}
+
 
 
 //private of Fraction
@@ -72,6 +82,7 @@ bool operator==(const Fraction &lhs,const Fraction &rhs)
 {
 	return ((lhs.nume==rhs.nume)&&(lhs.deno==rhs.deno));
 }
+
 
 const Fraction operator+ (const Fraction &lhs,const Fraction &rhs)
 {
