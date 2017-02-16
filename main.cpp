@@ -6,35 +6,53 @@
 #include "fraction.h"
 #include<string>
 #include<string.h>
-#include "prompt.h"
+#include<math.h>
 using namespace std;
 int main()
 {
-	int corrnum=0;
-	int wrongnum=0； 
+	int prompt;
+	cout<<"请选择提示语言，输入1为中文，输入2为英文。"<<endl;
+	cout<<"Please select the prompt language，click “1”means you need Chinese prompt language,whlie “2”means english."<<endl;
+	cin>>prompt;
 	int n;
-	cin>>n;
-	setpro(int a);
-	selectpro();//选择语言结束 
-	string wrongquestion[100];
-	string question[100];
+	
+	if(prompt==1)
+	{
+		cout<<"输入题目数量:";
+		cin >> n;
+		cout<<"你可以随时按e终止答题，当前题目不计入成绩"<<endl; 
+	}
+	else if(prompt==2)
+	{
+		cout<<"Enter the number of topics:"<<endl;
+		cin >> n;
+		cout<<"You can press e to stop answering at any time,while the question you are answering will no judged."<<endl;
+	}
+	else {cout << "Error: The input is wrong"<<endl; return 1;}
+	int corrnum=0;
+	int wrongnum=0;
+	
 	int num=0;
+	int len;
 	int x;
 	int i;
-	int len;
+	int j;
 	char ans[100];
 	int intans[100];
-	int wrongque[100];
-	int wrongans[100];
-	int rightans[100];
 	int judge=0;
+	int wrongquenum[100];
+	Operation *a[1000];
+	for(i=0;i<1000;i++)
+	{	
+		a[i]=NULL;
+	}
 	for(x=0;x<n;x++)
 	{
-		string question[x]=print();
-		rightans[x]=Operation::getans();
-		cout<<print()
+		a[x]=new Operation();
+		cout<<x+1<<". ";
+		(a[x])->print();
+		cout<<" = ";
 		cin>>ans;
-		p=new Frcation(ans,1);
 		len=strlen(ans);
 		for(i=0;i<len;i++)
 		{
@@ -46,56 +64,74 @@ int main()
 			break;
 		}
 		if(judge==1)
-		break; 
+			break; 
 		num=0;
 		for(i=0;i<len;i++)
 			{
-				num+=pow(10,len-i-1)*(ans[i]-48);
+				num+=(static_cast<int>(pow(10,len-i-1)*(ans[i]-48)));
 			}
 		intans[x]=num;	
-		if(a.getans==*p)
+		Fraction *p;
+		p=new Fraction(intans[x],1);
+		if((a[x]->getans())==*p)
 		{
 			corrnum++;
 		}
-		else if(a.getans==*p)
-		{
-			wrongque[wrongnum]=x+1;
-			wrongquestion[wrongnum]=question[x];
-			wrongans[wrongnum]=intans[x];
+		else 
+		{	
+			wrongquenum[wrongnum]=x;
 			wrongnum++;	
-		}	
-	 } 
-	for(i=0;i<len;i++)
-		{			
-			ans[i]='\0';
-		}
+		}	 
+		delete p;
 	}
-	 if(prompt==1)
+
+	cout << "-----------------------------------"<<endl;
+
+	if (prompt == 1)
 	{
-		cout<<"总计:"<<n+1<<endl;
-		cout<<"正确题数:"<<corrnum<<endl;
-		cout<<"错误题数:"<<wrongnum<<endl;
+		cout << "总计:" << n << setw(12) << "正确题数:" << corrnum << setw(12) << "错误题数:" << wrongnum << endl;
 	}
-	else if(prompt==2) 
+	else if (prompt == 2)
 	{
-		cout<<"Total:"<<n+1<<endl;
-		cout<<"True:"<<corrnum<<endl;
-		cout<<"False:"<<wrongnum<<endl;
-	}		
-	for(i=0;i<wrongnum;i++)
+		cout << "Total:" << n << setw(12)<< "True:" << corrnum <<setw(12)<< "False:" << wrongnum << endl;
+	}
+
+	cout << "-----------------------------------" << endl;
+
+	if(wrongnum>0)
+	{
+		if(prompt==1)
+		cout<<"错误详情："<<endl;
+		else if(prompt==2)
+		cout<<"Mistake："<<endl; 
+
+		for(i=0;i<wrongnum;i++)
 		{
+			j=wrongquenum[i];
+			cout << endl;
 			if(prompt==1)
 			{
-				cout<<"第"<<wrongque[i]+1<<"题错误"<<endl;
-				cout<<"你的答案:"<<wrongquestion[i]<<wrongans[i]<<endl;
-				cout<< "正确答案为"<<(a.getans)->print<<endl;
+				cout<<j+1<<". ";
+				(a[j])->print();
+				cout<<" = ";
+				((a[j])->getans()).print();
+				cout<<endl;
+				cout<<"  你的答案:"<<intans[j]<<endl;
 			}
-			else if(prompt==2) 
+			else if(prompt==2)
 			{
-				cout<<"The answer of question"<<wrongque[i]+1<<"is wrong"<<endl;
-				cout<<"Your answer is:"<<wrongans[i]<<endl;
-				cout<< "The right answer is:"<<(a.getans)->print<<endl; 
+				cout<<j+1<<". ";
+				(a[j])->print();
+				cout<<" = ";
+				((a[j])->getans()).print();
+				cout<<endl;
+				cout<<"  Your answer is"<<intans[j]<<endl;
 			}
 		}
+	}
 	
+	for (i = 0; i<1000; i++)
+	{
+		delete(a[i]);
+	}
 }
