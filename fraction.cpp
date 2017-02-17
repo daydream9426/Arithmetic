@@ -33,7 +33,7 @@ int Fraction::print()
 		width+=1;
 		deno=abs(deno);
 		nume=abs(nume);
-		
+
 	}
 	widnume=(static_cast<int> (log10(nume)))+1;
 	widdeno=(static_cast<int> (log10(deno)))+1;
