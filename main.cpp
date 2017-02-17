@@ -58,6 +58,7 @@ int main()
 		cout<<" = ";
 		cin>>ans;
 		len=strlen(ans);
+		judge = 0;
 		for(i=0;i<len;i++)
 		{
 			if(ans[i]=='e')
@@ -68,15 +69,19 @@ int main()
 			break;
 		}
 		if(judge==1)
-			break;
+			break; 
 		num=0;
+		judge=0;
+		if (ans[0]=='-') judge=1;
 		for(i=0;i<len;i++)
-			{
+			{ 
+				if ((judge==1)&&(i==0)) continue;
 				num+=(static_cast<int>(pow(10,len-i-1)*(ans[i]-48)));
 			}
-		intans[x]=num;
+		if (judge==1) intans[x]=0-num;
+		else intans[x]=num;
 		Fraction *p;
-		p=new Fraction(intans[x],1);
+		p=new Fraction(intans[x],1); 
 		if((a[x]->getans())==*p)
 		{
 			corrnum++;
