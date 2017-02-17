@@ -18,7 +18,7 @@ int main()
 	cout<<"Please select the prompt language，click “1”means you need Chinese prompt language,whlie “2”means english."<<endl;
 	cin>>prompt;
 	int n;
-	
+
 	if(prompt==1)
 	{
 		cout<<"输入题目数量:";
@@ -34,7 +34,7 @@ int main()
 	else {cout << "Error: The input is wrong"<<endl; return 1;}
 	int corrnum=0;
 	int wrongnum=0;
-	
+
 	int num=0;
 	int len;
 	int x;
@@ -107,7 +107,6 @@ int main()
 		cout<<"错误详情："<<endl;
 		else if(prompt==2)
 		cout<<"Mistake："<<endl;
-		
 		for(i=0;i<wrongnum;i++)
 		{
 			j=wrongquenum[i];
@@ -132,7 +131,7 @@ int main()
 			}
 		}
 	}
-	
+
 	for (i = 0; i<1000; i++)
 	{
 		delete(a[i]);

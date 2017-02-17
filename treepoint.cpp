@@ -34,8 +34,8 @@ int TreePoint::newnum(int randmin,int randmax)
 
 int TreePoint::set()
 {
-	int flag,x; 
-	if (symbol=='0') 
+	int flag,x;
+	if (symbol=='0')
 	{
 		prep=NULL;next=NULL;priority=3;
 		flag=newnum(0,1);
@@ -47,9 +47,9 @@ int TreePoint::set()
 		{
 			x=newnum(1,MAXNUM-1);
 			num=new Fraction(x,newnum(x+1,MAXNUM));
-		} 
+		}
 	}
-	else 
+	else
 	{
 		switch (symbol)
 		{
@@ -67,7 +67,7 @@ int TreePoint::set()
 //public
 TreePoint::TreePoint() :prep(NULL),next(NULL),symbol('0'),priority(4),rightpriority(4),num(NULL)
 {
-	
+
 }
 //default constructor
 
@@ -83,14 +83,14 @@ TreePoint::TreePoint(int model,int f):prep(NULL),next(NULL),symbol('0'),priority
 	if (f==1)// make sure the equation has 3 number
 	{
 		if ((c=newnum(0,1))==0)
-		{		
-			prep=new TreePoint(1,2);  
-			next=new TreePoint(0,2);		
+		{
+			prep=new TreePoint(1,2);
+			next=new TreePoint(0,2);
 		}
-		else 
+		else
 		{
 			prep=new TreePoint(0,2);
-			next=new TreePoint(1,2);		
+			next=new TreePoint(1,2);
 		}
 	}
 	else if ((f<MAXLEVEL)&&(symbol!='0'))// make sure the equation has MAXLEVEL number most.
@@ -123,7 +123,7 @@ int TreePoint::print(int lastpri)// first time lastpri=0
 	if (symbol!='0'&&symbol!='/')
 		{std::cout<<" "<<symbol<<" ";wid+=3;}
 	else if (symbol=='/')
-		{std::cout<<" ¡Â ";wid+=4;}
+		{std::cout<<" ï¿½ï¿½ ";wid+=4;}
 	else {wid+=(num->print());}
 	if (next!=NULL)
 		next->print(rightpriority);

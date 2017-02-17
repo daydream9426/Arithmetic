@@ -25,9 +25,9 @@ Fraction::Fraction(const Fraction &from)
 int Fraction::print()
 {
 	int width=0,widnume=0,widdeno=0;
-	
+
 	if (nume==0) {std::cout<<"0";width+=1;return width;}
-	if (deno*nume<0) 
+	if (deno*nume<0)
 	{
 		std::cout<<"-";
 		width+=1;

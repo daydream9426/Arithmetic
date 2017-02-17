@@ -2,13 +2,13 @@
 #define OPERATION_H_
 
 #include "fraction.h"
-#include "treepoint.h" 
+#include "treepoint.h"
 
 class Operation{
 private:
 	TreePoint *root;
 	Fraction ans;
-	
+
 public:
 	Operation();
 	~Operation();

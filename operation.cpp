@@ -32,7 +32,7 @@ int Operation::print()
 {
 	wid=0;
 	root->print(0);
-	return wid; 
+	return wid;
 }
 Fraction Operation::getans()
 {
