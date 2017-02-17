@@ -23,7 +23,7 @@ int main()
 	{
 		cout<<"输入题目数量:";
 		cin >> n;
-		cout<<"你可以随时按e终止答题，当前题目不计入成绩"<<endl; 
+		cout<<"你可以随时按e终止答题，当前题目不计入成绩"<<endl;
 	}
 	else if(prompt==2)
 	{
@@ -46,7 +46,7 @@ int main()
 	int wrongquenum[100];
 	Operation *a[1000];
 	for(i=0;i<1000;i++)
-	{	
+	{
 		a[i]=NULL;
 	}
 	for(x=0;x<n;x++)
@@ -67,24 +67,24 @@ int main()
 			break;
 		}
 		if(judge==1)
-			break; 
+			break;
 		num=0;
 		for(i=0;i<len;i++)
 			{
 				num+=(static_cast<int>(pow(10,len-i-1)*(ans[i]-48)));
 			}
-		intans[x]=num;	
+		intans[x]=num;
 		Fraction *p;
 		p=new Fraction(intans[x],1);
 		if((a[x]->getans())==*p)
 		{
 			corrnum++;
 		}
-		else 
-		{	
+		else
+		{
 			wrongquenum[wrongnum]=x;
-			wrongnum++;	
-		}	 
+			wrongnum++;
+		}
 		delete p;
 	}
 
@@ -106,8 +106,8 @@ int main()
 		if(prompt==1)
 		cout<<"错误详情："<<endl;
 		else if(prompt==2)
-		cout<<"Mistake："<<endl; 
-
+		cout<<"Mistake："<<endl;
+		
 		for(i=0;i<wrongnum;i++)
 		{
 			j=wrongquenum[i];
@@ -128,7 +128,7 @@ int main()
 				cout<<" = ";
 				((a[j])->getans()).print();
 				cout<<endl;
-				cout<<"  Your answer is"<<intans[j]<<endl;
+				cout<<"  Your answer is "<<intans[j]<<endl;
 			}
 		}
 	}
