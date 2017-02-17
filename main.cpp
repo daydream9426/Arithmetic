@@ -13,6 +13,7 @@
 using namespace std;
 int main()
 {
+	srand(static_cast<unsigned> (time(NULL)));
 	int prompt;
 	cout<<"请选择提示语言，输入1为中文，输入2为英文。"<<endl;
 	cout<<"Please select the prompt language，click “1”means you need Chinese prompt language,whlie “2”means english."<<endl;
