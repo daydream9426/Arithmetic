@@ -117,31 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="prompt" xml:space="preserve">
-    <value>7/5000
-Qǐng xuǎnzé tíshì yǔyán
-プロンプト言語を選択してください</value>
-  </data>
-  <data name="quenum" xml:space="preserve">
-    <value>アイテムの数を入力します。</value>
-  </data>
-  <data name="ebreak" xml:space="preserve">
-    <value>
-あなたは電子の回答により、いつでも終了することができ、結果は現在のタイトルに含まれていません</value>
-  </data>
-  <data name="total" xml:space="preserve">
-    <value>合計：</value>
-  </data>
-  <data name="corrnum" xml:space="preserve">
+  <data name="CorrectNum" xml:space="preserve">
     <value>質問の正しい数：</value>
   </data>
-  <data name="wronum" xml:space="preserve">
-    <value>質問のエラー番号：</value>
-  </data>
-  <data name="wdetail" xml:space="preserve">
+  <data name="DetailMistake" xml:space="preserve">
     <value>エラーの詳細：</value>
   </data>
-  <data name="ueserans" xml:space="preserve">
+  <data name="InputNote" xml:space="preserve">
+    <value>あなたは電子の回答により、いつでも終了することができ、結果は現在のタイトルに含まれていません</value>
+  </data>
+  <data name="InputNumberOfProblems" xml:space="preserve">
+    <value>アイテムの数を入力します。</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>合計：</value>
+  </data>
+  <data name="WrongNum" xml:space="preserve">
+    <value>質問のエラー番号：</value>
+  </data>
+  <data name="YourAnswer" xml:space="preserve">
     <value>あなたの答え：</value>
   </data>
 </root>

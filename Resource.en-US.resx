@@ -117,28 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="corrnum" xml:space="preserve">
-    <value>True:</value>
+  <data name="CorrectNum" xml:space="preserve">
+    <value>Correct:</value>
   </data>
-  <data name="ebreak" xml:space="preserve">
+  <data name="DetailMistake" xml:space="preserve">
+    <value>Mistake:</value>
+  </data>
+  <data name="InputNote" xml:space="preserve">
     <value>You can press e to stop answering at any time,while the question you are answering will no judged.</value>
   </data>
-  <data name="prompt" xml:space="preserve">
-    <value>Please select the prompt language</value>
-  </data>
-  <data name="quenum" xml:space="preserve">
+  <data name="InputNumberOfProblems" xml:space="preserve">
     <value>Enter the number of topics:</value>
   </data>
-  <data name="total" xml:space="preserve">
+  <data name="Total" xml:space="preserve">
     <value>Total:</value>
   </data>
-  <data name="ueserans" xml:space="preserve">
+  <data name="WrongNum" xml:space="preserve">
+    <value>Wrong:</value>
+  </data>
+  <data name="YourAnswer" xml:space="preserve">
     <value>Your answer is</value>
-  </data>
-  <data name="wdetail" xml:space="preserve">
-    <value>Mistake：</value>
-  </data>
-  <data name="wronum" xml:space="preserve">
-    <value>False:</value>
   </data>
 </root>

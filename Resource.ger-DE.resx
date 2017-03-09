@@ -117,34 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="corrnum" xml:space="preserve">
+  <data name="CorrectNum" xml:space="preserve">
     <value>Die richtige Anzahl der Fragen:</value>
   </data>
-  <data name="ebreak" xml:space="preserve">
-    <value>Sie können per e Antwort jederzeit kündigen, werden die Ergebnisse nicht im aktuellen Titel enthalten</value>
-  </data>
-  <data name="prompt" xml:space="preserve">
-    <value>
-
-Bitte wählen Sie die schnelle Sprache</value>
-  </data>
-  <data name="quenum" xml:space="preserve">
-    <value>Geben Sie die Anzahl der Objekte:</value>
-  </data>
-  <data name="string9" xml:space="preserve">
-    <value />
-  </data>
-  <data name="total" xml:space="preserve">
-    <value>
-Total:</value>
-  </data>
-  <data name="ueserans" xml:space="preserve">
-    <value>Ihre Antwort:</value>
-  </data>
-  <data name="wdetail" xml:space="preserve">
+  <data name="DetailMistake" xml:space="preserve">
     <value>Fehlerdetails :</value>
   </data>
-  <data name="wronum" xml:space="preserve">
+  <data name="InputNote" xml:space="preserve">
+    <value>Sie können per e Antwort jederzeit kündigen, werden die Ergebnisse nicht im aktuellen Titel enthalten</value>
+  </data>
+  <data name="InputNumberOfProblems" xml:space="preserve">
+    <value>Geben Sie die Anzahl der Objekte:</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total:</value>
+  </data>
+  <data name="WrongNum" xml:space="preserve">
     <value>Fehler Anzahl der Fragen:</value>
+  </data>
+  <data name="YourAnswer" xml:space="preserve">
+    <value>Ihre Antwort:</value>
   </data>
 </root>

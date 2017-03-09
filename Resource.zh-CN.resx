@@ -117,28 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="prompt" xml:space="preserve">
-    <value>请选择提示语言</value>
+  <data name="CorrectNum" xml:space="preserve">
+    <value>正确题数：</value>
   </data>
-  <data name="quenum" xml:space="preserve">
-    <value>输入题目数量:</value>
-  </data>
-  <data name="ebreak" xml:space="preserve">
-    <value>你可以随时按e终止答题，当前题目不计入成绩</value>
-  </data>
-  <data name="total" xml:space="preserve">
-    <value>总计:</value>
-  </data>
-  <data name="corrnum" xml:space="preserve">
-    <value>正确题数:</value>
-  </data>
-  <data name="wronum" xml:space="preserve">
-    <value>错误题数:</value>
-  </data>
-  <data name="wdetail" xml:space="preserve">
+  <data name="DetailMistake" xml:space="preserve">
     <value>错误详情：</value>
   </data>
-  <data name="ueserans" xml:space="preserve">
-    <value>你的答案:</value>
+  <data name="InputNote" xml:space="preserve">
+    <value>你可以随时按e终止答题，当前题目不计入成绩</value>
+  </data>
+  <data name="InputNumberOfProblems" xml:space="preserve">
+    <value>请输入题目数量</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>总计：</value>
+  </data>
+  <data name="WrongNum" xml:space="preserve">
+    <value>错误题数：</value>
+  </data>
+  <data name="YourAnswer" xml:space="preserve">
+    <value>你的答案：</value>
   </data>
 </root>
