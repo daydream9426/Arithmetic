@@ -1,145 +1,143 @@
 #include <iostream>
-#include <stdlib.h>
-#include <time.h>
-#include <iostream>
-#include <stdlib.h>
-#include <time.h>
 #include <iomanip>
+#include<string>
+#include <stdlib.h>
+#include <time.h>
+#include<math.h>
+#include<Windows.h>
 #include "operation.h"
 #include "fraction.h"
-#include<string>
-#include<string.h>
-#include<math.h>
+
+#define MAX_NUM_OF_PROBLEM 1000
+
+using namespace System;
+using namespace System::Resources;
+using namespace System::Collections;
+using namespace System::Globalization;
+using namespace System::Reflection;
 using namespace std;
+
 int main()
 {
+	//重置随机数种子
 	srand(static_cast<unsigned> (time(NULL)));
-	int prompt;
-	cout<<"请选择提示语言，输入1为中文，输入2为英文。"<<endl;
-	cout<<"Please select the prompt language，click “1”means you need Chinese prompt language,whlie “2”means english."<<endl;
-	cin>>prompt;
-	int n;
 
-	if(prompt==1)
-	{
-		cout<<"输入题目数量:";
-		cin >> n;
-		cout<<"你可以随时按e终止答题，当前题目不计入成绩"<<endl;
-	}
-	else if(prompt==2)
-	{
-		cout<<"Enter the number of topics:"<<endl;
-		cin >> n;
-		cout<<"You can press e to stop answering at any time,while the question you are answering will no judged."<<endl;
-	}
-	else {cout << "Error: The input is wrong"<<endl; return 1;}
-	int corrnum=0;
-	int wrongnum=0;
+	//读取资源文件
+	Assembly^ CurrentAssem = Assembly::GetExecutingAssembly();
+	ResourceManager RcLang("LangList", CurrentAssem);
+	CultureInfo^ DefaultLoca = gcnew CultureInfo("", false);
+	ResourceSet^ RcLangInfo = RcLang.GetResourceSet(DefaultLoca, true, true);
 
-	int num=0;
-	int len;
-	int x;
-	int i;
-	int j;
-	char ans[100];
-	int intans[100];
-	int judge=0;
-	int wrongquenum[100];
-	Operation *a[1000];
-	for(i=0;i<1000;i++)
+	
+	//输出可以使用的语言
+	int NumLang = 0;
+	IDictionaryEnumerator^ idlanginfo = RcLangInfo->GetEnumerator();
+	while (idlanginfo->MoveNext())
 	{
-		a[i]=NULL;
+		NumLang++;
+		Console::WriteLine("{0}:{1,-7}", NumLang, idlanginfo->Key);
 	}
-	for(x=0;x<n;x++)
+	std::cout << "Please enter the prompt language by its name:";
+	
+	//读入用户选择的语言和对应的resource
+	String^ str = Console::ReadLine();
+	ResourceManager rc("Resource", CurrentAssem);
+	CultureInfo^ loca = gcnew CultureInfo(RcLang.GetString(str), false);
+
+	//读入将生成的问题数量
+	int NumProblem;
+	Console::Write("{0}\n", rc.GetString("InputNumberOfProblems", loca));
+	cin >> NumProblem;
+
+	//关于作答的其他说明
+	Console::WriteLine("{0}\n", rc.GetString("InputNote", loca)); 
+	
+	// 生成并输出题目
+	int CorrNum = 0, WrongNum = 0;
+	int i,j;//循环变量
+	char ans[MAX_NUM_OF_PROBLEM];//用户答案（字符串）
+	int len;//用户答案长度
+	int intans[MAX_NUM_OF_PROBLEM];//用户答案（数值）
+	int judge = 0;//判断用户答案中是否含有e
+	int num = 0;//转换用户答案
+	int WrongQueNum[MAX_NUM_OF_PROBLEM];//回答错误的题目的编号
+	Operation *Problem[MAX_NUM_OF_PROBLEM];//指向题目的指针
+	for (i = 0; i < MAX_NUM_OF_PROBLEM; i++)
+		Problem[i] = NULL;
+	//输出 “序号.题目=”并输入用户答案
+	for (j = 0; j<NumProblem; j++)
 	{
-		a[x]=new Operation();
-		cout<<x+1<<". ";
-		(a[x])->print();
-		cout<<" = ";
-		cin>>ans;
-		len=strlen(ans);
+		Problem[j] = new Operation();
+		cout << j + 1 << ". ";
+		(Problem[j])->print();
+		cout << " = ";
+		cin >> ans;
+		len = strlen(ans);
 		judge = 0;
-		for(i=0;i<len;i++)
+		for (i = 0; i<len; i++)
 		{
-			if(ans[i]=='e')
+			if (ans[i] == 'e')
 			{
-				judge=1;//judge=1 means it contains 'e'
+				judge = 1;//judge=1 means it contains 'e'
 			}
-			if(judge==1)
-			break;
+			if (judge == 1)
+				break;
 		}
-		if(judge==1)
+		if (judge == 1)
 			break;
-		num=0;
-		judge=0;
-		if (ans[0]=='-') judge=1;
-		for(i=0;i<len;i++)
+		
+		num = 0;
+		judge = 0;
+		if (ans[0] == '-') judge = 1;
+		for (i = 0; i<len; i++)
 		{
-			if ((judge==1)&&(i==0)) continue;
-			num+=(static_cast<int>(pow(10,len-i-1)*(ans[i]-48)));
+			if ((judge == 1) && (i == 0)) continue;
+			num += (static_cast<int>(pow(10, len - i - 1)*(ans[i] - 48)));
 		}
-		if (judge==1) intans[x]=0-num;
-		else intans[x]=num;
-		Fraction *p;
-		p=new Fraction(intans[x],1);
-		if((a[x]->getans())==*p)
+		if (judge == 1) intans[j] = 0 - num;
+		else intans[j] = num;
+		Fraction *p;//指向 分数 的指针
+		p = new Fraction(intans[j], 1);
+		if ((Problem[j]->getans()) == *p)
 		{
-			corrnum++;
+			CorrNum++;
 		}
 		else
 		{
-			wrongquenum[wrongnum]=x;
-			wrongnum++;
+			WrongQueNum[WrongNum] = j;
+			WrongNum++;
 		}
 		delete p;
 	}
 
-	cout << "-----------------------------------"<<endl;
-
-	if (prompt == 1)
-	{
-		cout << "总计:" << n << setw(12) << "正确题数:" << corrnum << setw(12) << "错误题数:" << wrongnum << endl;
-	}
-	else if (prompt == 2)
-	{
-		cout << "Total:" << n << setw(12)<< "True:" << corrnum <<setw(12)<< "False:" << wrongnum << endl;
-	}
-
 	cout << "-----------------------------------" << endl;
 
-	if(wrongnum>0)
+	//输出报告
+	Console::WriteLine("{0}{1,-12}{2}{3,-12}{4}{5,-12}", rc.GetString("Total", loca), CorrNum+WrongNum,
+		rc.GetString("CorrectNum", loca),CorrNum,rc.GetString("WrongNum", loca), WrongNum);
+	int WrongCode;//错误题目编号
+	if (WrongNum > 0)
 	{
-		if(prompt==1)
-		cout<<"错误详情："<<endl;
-		else if(prompt==2)
-		cout<<"Mistake："<<endl;
-		for(i=0;i<wrongnum;i++)
+		Console::WriteLine("{0}", rc.GetString("DetailMistake", loca));
+		for (i = 0; i < WrongNum; i++)
 		{
-			j=wrongquenum[i];
 			cout << endl;
-			if(prompt==1)
-			{
-				cout<<j+1<<". ";
-				(a[j])->print();
-				cout<<" = ";
-				((a[j])->getans()).print();
-				cout<<endl;
-				cout<<"  你的答案:"<<intans[j]<<endl;
-			}
-			else if(prompt==2)
-			{
-				cout<<j+1<<". ";
-				(a[j])->print();
-				cout<<" = ";
-				((a[j])->getans()).print();
-				cout<<endl;
-				cout<<"  Your answer is "<<intans[j]<<endl;
-			}
+			WrongCode = WrongQueNum[i];
+			cout << WrongCode + 1 << ".";
+			(Problem[WrongCode])->print();
+			cout << " = ";
+			((Problem[WrongCode])->getans()).print();
+			cout << endl;
+			Console::Write("{0,4}", rc.GetString("YourAnswer", loca));
+			cout << intans[WrongCode] << endl;
 		}
 	}
+	cout << endl;
 
-	for (i = 0; i<1000; i++)
+	//结束程序前处理	
+	for (i = 0; i<MAX_NUM_OF_PROBLEM; i++)
 	{
-		delete(a[i]);
+		delete(Problem[i]);
 	}
+	return 0;
 }
